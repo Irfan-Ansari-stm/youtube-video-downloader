@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video and Audio Downloader</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+      #start-btn {
+        width: 40%;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">YTdownloader</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Downloads</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Convert</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <h1 class="text-center">Video and Audio Downloader</h1>
+      <form action="/" method="POST">
+        <div class="form-group text-center">
+          <label for="inputVideoURL">Video URL</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputVideoURL"
+            placeholder="Enter video URL"
+            name="url"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" id="start-btn">
+            Start
+          </button>
+        </div>
+      </form>
+
+      <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <br />
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe
+                class="embed-responsive-item"
+                src="{{url.title}}"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <br />
+            <div class="col-xs-12 col-sm-7 col-md-10">
+              <ul
+                class="nav nav-tabs justify-content-start"
+                id="selectTab"
+                role="tablist"
+              >
+                <li class="nav-item p-0 active" role="presentation">
+                  <a class="nav-link" href="#mp4" data-toggle="tab"
+                    ><svg
+                      style="width: 16px; height: auto; margin: -5px 5px 0 0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z"
+                      ></path></svg
+                    >Video</a
+                  >
+                </li>
+                <li class="nav-item p-0" role="presentation">
+                  <a class="nav-link" href="#audio" data-toggle="tab"
+                    ><svg
+                      style="width: 16px; height: auto; margin: -5px 5px 0 0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"
+                      ></path></svg
+                    >Audio</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active in" id="mp4">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>File type</th>
+                        <th>File size</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <td>MP4 auto quality</td>
+                        <td>MB</td>
+                        <td class="txt-center">
+                          <button
+                            type="button"
+                            class="btn btn-success"
+                            onclick="startConvert('mp4','joEUX9fnl5KhasP17/fV9sf5Al7j4qUlhNgqkwwiFL9Dut97h7b6e5gffv1dndr7S9sM9m+CJ4SIMlWM5ch0GCDRooVn6Gaaog==');"
+                            fdprocessedid="u861u"
+                          >
+                            <i class="glyphicon glyphicon-download-alt"></i
+                            >&nbsp; Download
+                          </button>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+
+                <div class="tab-pane fade" id="audio">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>File type</th>
+                        <th>File size</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>MP3 - 128kbps</td>
+                        <td>22.9 MB</td>
+                        <td class="txt-center">
+                          <button
+                            type="button"
+                            class="btn btn-success"
+                            onclick="startConvert('mp3','joEUX9fnl5KhasP17/fV9sf5Al7j4qUlhNgqlAxyU/NQ9Nl/hb74cpkfdPVfndP4FIZXpGSOJdOJagra5sp8ESPUpIxs4Gqe');"
+                          >
+                            <i class="glyphicon glyphicon-download-alt"></i
+                            >&nbsp; Download
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--content section-->
+
+      <hr />
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <h3>Related Videos</h3>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="thumbnail">
+                <img src="fff.jpg" alt="Thumbnail 3" class="img-fluid" />
+                <div class="caption">
+                  <h5>i am a  title</h5>
+                  <p>Description of Video 3</p>
+                  <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-4 py-2 bg-dark text-white text-center">
+      &copy; 2023 freedownloadmanager.com. All rights reserved.
+    </footer>
+  </body>
+</html>
