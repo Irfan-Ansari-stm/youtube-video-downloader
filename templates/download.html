@@ -47,11 +47,11 @@
                   <path
                     fill="currentColor"
                     d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"
-                  ></path></svg
-                >Audio</a
+                  ></path></svg>Audio</a
               >
             </li>
           </ul>
+          <form action="" method="post">
           <div class="tab-content">
             <div class="tab-pane active in" id="mp4">
               <table class="table table-bordered">
@@ -71,8 +71,7 @@
                       <button
                         type="submit"
                         class="btn btn-success"
-                        onclick="startConvert('mp4','joEUX9fnl5KhasP17/fV9sf5Al7j4qUlhNgqkwwiFL9Dut97h7b6e5gffv1dndr7S9sM9m+CJ4SIMlWM5ch0GCDRooVn6Gaaog==');"
-                        fdprocessedid="u861u"
+                        
                       >
                         <i class="glyphicon glyphicon-download-alt"></i
                         >&nbsp; Download
@@ -80,12 +79,11 @@
                     </td>
                   </tr>
                   {% endfor %}
-
                 </tbody>
               </table>
             </div>
-
-
+          </form>
+        <form action="" method="post">
             <div class="tab-pane fade" id="audio">
               <table class="table table-bordered">
                 <thead>
@@ -96,15 +94,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for audio in file_info %}
                   <tr>
-                    {% for audio in audio_info %}
-                    <td>{{ audio.format }}</td><!--dynamic audio-->
+                  <!--for-->
+                    <td>{{ audio.resolution }}</td><!--dynamic audio-->
                     <td>{{ audio.size }} MB</td>
                     <td class="txt-center">
                       <button
                         type="submit"
                         class="btn btn-success"
                         onclick="startConvert('mp3','joEUX9fnl5KhasP17/fV9sf5Al7j4qUlhNgqlAxyU/NQ9Nl/hb74cpkfdPVfndP4FIZXpGSOJdOJagra5sp8ESPUpIxs4Gqe');"
+
                       >
                         <i class="glyphicon glyphicon-download-alt"></i>
                         &nbsp; Download
@@ -115,7 +115,7 @@
                 </tbody>
               </table>
             </div>
-
+        </form>
             
           </div>
         </div>
