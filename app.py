@@ -16,13 +16,14 @@ def index():
             url = YouTube(session['link'])
             url.check_availability()
             resolutions = get_available_resolutions(url)
+            res = get_available_audio(url)
             
             
    
         except:
             return render_template('error.html') 
 
-        return render_template('download.html',url=url,resolutions=resolutions)
+        return render_template('download.html',url=url,resolutions=resolutions,res=res)
     
     return render_template('index.html')
 
@@ -35,7 +36,14 @@ def get_available_resolutions(youtube):
             resolutions.append((stream.resolution, size_in_mb))
     return resolutions
 
-
+def get_available_audio(youtube):
+    res = []
+    for stream in youtube.streams.filter(only_audio=True):
+        if stream.resolution and stream.resolution not in res:
+            size_in_bytes = stream.filesize
+            size_in_mb = round(size_in_bytes / (1024 * 1024),2)
+            res.append((stream.resolution, size_in_mb))
+    return res
 
 '''
 def get_audio_info(youtube):

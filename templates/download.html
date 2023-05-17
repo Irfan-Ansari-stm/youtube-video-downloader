@@ -71,7 +71,8 @@
                       <button
                         type="submit"
                         class="btn btn-success"
-                        
+                        onclick="startConvert('mp4','joEUX9fnl5KhasP17/fV9sf5Al7j4qUlhNgqkwwiFL9Dut97h7b6e5gffv1dndr7S9sM9m+CJ4SIMlWM5ch0GCDRooVn6Gaaog==');"
+                        fdprocessedid="u861u"
                       >
                         <i class="glyphicon glyphicon-download-alt"></i
                         >&nbsp; Download
@@ -94,11 +95,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for audio in file_info %}
+                  {% for resolution, size in res %}
                   <tr>
                   <!--for-->
-                    <td>{{ audio.resolution }}</td><!--dynamic audio-->
-                    <td>{{ audio.size }} MB</td>
+                    <td>{{ resolution }}</td><!--dynamic audio-->
+                    <td>{{ size }} MB</td>
                     <td class="txt-center">
                       <button
                         type="submit"
